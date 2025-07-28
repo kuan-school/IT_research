@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svnroot/sleuth-ga/!svn/ver/1/Scenarios
+END
+scenario.demo200_predict
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/sleuth-ga/!svn/ver/1/Scenarios/scenario.demo200_predict
+END
+scenario.demo200_land_test
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/sleuth-ga/!svn/ver/1/Scenarios/scenario.demo200_land_test
+END
+scenario.demo200_test
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/sleuth-ga/!svn/ver/1/Scenarios/scenario.demo200_test
+END
+scenario.demo200_calibrate
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/sleuth-ga/!svn/ver/1/Scenarios/scenario.demo200_calibrate
+END

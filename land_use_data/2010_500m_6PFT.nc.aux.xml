@@ -1,0 +1,38 @@
+<PAMDataset>
+  <Subdataset name="LU_TYPE">
+    <PAMDataset>
+      <PAMRasterBand band="1">
+        <Metadata>
+          <MDI key="STATISTICS_MAXIMUM">26</MDI>
+          <MDI key="STATISTICS_MEAN">2.6558360927152</MDI>
+          <MDI key="STATISTICS_MINIMUM">1</MDI>
+          <MDI key="STATISTICS_STDDEV">3.8440915201798</MDI>
+        </Metadata>
+      </PAMRasterBand>
+    </PAMDataset>
+  </Subdataset>
+  <Subdataset name="nav_lat">
+    <PAMDataset>
+      <PAMRasterBand band="1">
+        <Metadata>
+          <MDI key="STATISTICS_MAXIMUM">25.955488204956</MDI>
+          <MDI key="STATISTICS_MEAN">23.98583682093</MDI>
+          <MDI key="STATISTICS_MINIMUM">22.006689071655</MDI>
+          <MDI key="STATISTICS_STDDEV">1.17201977292</MDI>
+        </Metadata>
+      </PAMRasterBand>
+    </PAMDataset>
+  </Subdataset>
+  <Subdataset name="nav_lon">
+    <PAMDataset>
+      <PAMRasterBand band="1">
+        <Metadata>
+          <MDI key="STATISTICS_MAXIMUM">123.70011138916</MDI>
+          <MDI key="STATISTICS_MEAN">121.82583964602</MDI>
+          <MDI key="STATISTICS_MINIMUM">119.97678375244</MDI>
+          <MDI key="STATISTICS_STDDEV">1.0597982774433</MDI>
+        </Metadata>
+      </PAMRasterBand>
+    </PAMDataset>
+  </Subdataset>
+</PAMDataset>
