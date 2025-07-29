@@ -155,14 +155,28 @@ def convert_full_taiwan_data():
     }
     
     for year, filename in landuse_years.items():
+        print(f"Converting landuse data for {year}...")
         netcdf_file = landuse_path / filename
         if netcdf_file.exists():
-            converter.netcdf_to_landuse_gif(netcdf_file, "taiwan", year)
+            try:
+                converter.netcdf_to_landuse_gif(netcdf_file, "taiwan", year)
+                print(f"✓ Successfully converted {year}")
+            except Exception as e:
+                print(f"✗ Error converting landuse data: {e}")
+        else:
+            print(f"✗ File not found: {filename}")
     
-    # 轉換 DEM 為 Slope
+    # 轉換 DEM 為 Slope  
+    print("Converting DEM to slope...")
     full_taiwan_dem = base_path / "不分幅_全台20MDEM(2024)" / "不分幅_台灣20MDEM(2024).tif"
     if full_taiwan_dem.exists():
-        converter.dem_to_slope_gif(full_taiwan_dem, "taiwan")
+        try:
+            converter.dem_to_slope_gif(full_taiwan_dem, "taiwan")
+            print("✓ Successfully converted DEM to slope")
+        except Exception as e:
+            print(f"✗ Error converting slope data: {e}")
+    else:
+        print(f"✗ DEM file not found: {full_taiwan_dem}")
     
     print("Full Taiwan conversion complete!")
 
