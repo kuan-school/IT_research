@@ -48,6 +48,13 @@ class TaiwanToSLEUTH:
         tools = ['gdal_rasterize', 'gdal_translate', 'gdaldem', 'ogr2ogr']
         missing = []
         
+        # Add common GDAL installation paths
+        import os
+        gdal_paths = ['/opt/homebrew/bin', '/usr/local/bin', '/usr/bin']
+        for path in gdal_paths:
+            if path not in os.environ.get('PATH', ''):
+                os.environ['PATH'] = path + ':' + os.environ.get('PATH', '')
+        
         for tool in tools:
             try:
                 subprocess.run([tool, '--version'], capture_output=True, check=True)
