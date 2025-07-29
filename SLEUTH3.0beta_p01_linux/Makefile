@@ -9,7 +9,7 @@ GD_LIB = ./GD
 # choose a compiler
 #
 #CC = cc
-CC = gcc-14
+CC = gcc-15
 
 #
 # choose DEP = -M for cc and -MM for gcc

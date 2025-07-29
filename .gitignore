@@ -1,2 +1,4 @@
+*.o
+SLEUTH3.0beta_p01_linux/Output/
 findlarge.sh
 .~lock*

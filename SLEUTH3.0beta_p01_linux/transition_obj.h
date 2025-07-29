@@ -4,6 +4,6 @@ trans_Init();
 
 void trans_MemoryLog(FILE* fp);
 void
-trans_LogTransition();
+trans_LogTransition(FILE* fp);
 double* trans_GetClassSlope();
 double* trans_GetFTransition();

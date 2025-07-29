@@ -1,0 +1,180 @@
+# SLEUTH Scenario File for Taiwan Urban Growth Modeling
+# 台灣城市成長模型校正配置檔案
+# 基於台灣歷史土地利用資料 (1904-2015)
+
+# I. PATH NAME VARIABLES
+INPUT_DIR=Input/taiwan_taipei/
+OUTPUT_DIR=Output/taiwan_calibrate/
+WHIRLGIF_BINARY=Whirlgif/whirlgif
+
+# II. RUNNING STATUS (ECHO)
+ECHO(YES/NO)=yes
+
+# III. Output Files
+WRITE_COEFF_FILE(YES/NO)=yes
+WRITE_AVG_FILE(YES/NO)=yes
+WRITE_STD_DEV_FILE(YES/NO)=yes
+WRITE_MEMORY_MAP(YES/NO)=yes
+LOGGING(YES/NO)=yes
+
+# IV. Log File Preferences
+LOG_LANDCLASS_SUMMARY(YES/NO)=yes
+LOG_SLOPE_WEIGHTS(YES/NO)=yes
+LOG_READS(YES/NO)=no
+LOG_WRITES(YES/NO)=no
+LOG_COLORTABLES(YES/NO)=no
+LOG_PROCESSING_STATUS(0:off/1:low verbosity/2:high verbosity)=1
+LOG_TRANSITION_MATRIX(YES/NO)=yes
+LOG_URBANIZATION_ATTEMPTS(YES/NO)=no
+LOG_INITIAL_COEFFICIENTS(YES/NO)=yes
+LOG_BASE_STATISTICS(YES/NO)=yes
+LOG_DEBUG(YES/NO)=no
+LOG_TIMINGS(0:off/1:low verbosity/2:high verbosity)=1
+
+# V. WORKING GRIDS
+NUM_WORKING_GRIDS=6
+
+# VI. RANDOM NUMBER SEED
+RANDOM_SEED=1
+
+# VII. MONTE CARLO ITERATIONS
+MONTE_CARLO_ITERATIONS=3
+
+# VIII. COEFFICIENTS
+# 針對台灣快速都市化特性調整係數範圍
+
+# DIFFUSION: 影響自發性成長，台灣都市密集，設定較高值
+CALIBRATION_DIFFUSION_START=10
+CALIBRATION_DIFFUSION_STEP=5
+CALIBRATION_DIFFUSION_STOP=50
+
+# BREED: 新城市中心機率，台灣多核心發展特性
+CALIBRATION_BREED_START=20
+CALIBRATION_BREED_STEP=10
+CALIBRATION_BREED_STOP=80
+
+# SPREAD: 有機成長機率，台灣城市擴張快速
+CALIBRATION_SPREAD_START=30
+CALIBRATION_SPREAD_STEP=10
+CALIBRATION_SPREAD_STOP=90
+
+# SLOPE_RESISTANCE: 坡度阻力，台灣山地多，設定較高阻力
+CALIBRATION_SLOPE_START=80
+CALIBRATION_SLOPE_STEP=5
+CALIBRATION_SLOPE_STOP=95
+
+# ROAD_GRAVITY: 道路重力，台灣交通便利影響大
+CALIBRATION_ROAD_START=20
+CALIBRATION_ROAD_STEP=10
+CALIBRATION_ROAD_STOP=80
+
+# 預測用最佳係數 (需要校正後確定)
+PREDICTION_DIFFUSION_BEST_FIT=30
+PREDICTION_BREED_BEST_FIT=50
+PREDICTION_SPREAD_BEST_FIT=60
+PREDICTION_SLOPE_BEST_FIT=85
+PREDICTION_ROAD_BEST_FIT=50
+
+# IX. PREDICTION DATE RANGE
+PREDICTION_START_DATE=2015
+PREDICTION_STOP_DATE=2040
+
+# X. INPUT IMAGES
+# 基於台灣可用的歷史資料
+
+# Urban data GIFs (基於建築物資料推估)
+URBAN_DATA=taiwan.urban.1956.gif
+URBAN_DATA=taiwan.urban.1982.gif
+URBAN_DATA=taiwan.urban.1994.gif
+URBAN_DATA=taiwan.urban.2000.gif
+URBAN_DATA=taiwan.urban.2010.gif
+URBAN_DATA=taiwan.urban.2015.gif
+
+# Road data GIFs (基於道路網發展)
+ROAD_DATA=taiwan.roads.1956.gif
+ROAD_DATA=taiwan.roads.1982.gif
+ROAD_DATA=taiwan.roads.1994.gif
+ROAD_DATA=taiwan.roads.2000.gif
+ROAD_DATA=taiwan.roads.2010.gif
+ROAD_DATA=taiwan.roads.2015.gif
+
+# Landuse data GIFs (基於 NetCDF 歷史資料)
+LANDUSE_DATA=taiwan.landuse.1956.gif
+LANDUSE_DATA=taiwan.landuse.1982.gif
+LANDUSE_DATA=taiwan.landuse.1994.gif
+LANDUSE_DATA=taiwan.landuse.2000.gif
+LANDUSE_DATA=taiwan.landuse.2010.gif
+LANDUSE_DATA=taiwan.landuse.2015.gif
+
+# Excluded data GIF (海洋、湖泊等)
+EXCLUDED_DATA=taiwan.excluded.gif
+
+# Slope data GIF (基於 20M DEM)
+SLOPE_DATA=taiwan.slope.gif
+
+# Background data GIF (可選，地形底圖)
+#BACKGROUND_DATA=taiwan.hillshade.gif
+
+# XI. OUTPUT IMAGES
+WRITE_COLOR_KEY_IMAGES(YES/NO)=yes
+ECHO_IMAGE_FILES(YES/NO)=yes
+ANIMATION(YES/NO)=yes
+
+# XII. COLORTABLE SETTINGS
+
+# A. DATE COLOR SETTING
+DATE_COLOR=0XFFFFFF #white
+
+# B. URBAN (NON-LANDUSE) COLORTABLE SETTINGS
+SEED_COLOR=0XFF0000 #red (existing urban)
+WATER_COLOR=0X0066CC #blue
+
+# C. PROBABILITY COLORTABLE FOR URBAN GROWTH
+#                  low,  upper,   hex,  (Optional Name)
+PROBABILITY_COLOR=   0,    20,         , #transparent
+PROBABILITY_COLOR=  20,    40, 0X90EE90, #light green
+PROBABILITY_COLOR=  40,    60, 0X32CD32, #lime green
+PROBABILITY_COLOR=  60,    80, 0X228B22, #forest green
+PROBABILITY_COLOR=  80,    90, 0XFFA500, #orange
+PROBABILITY_COLOR=  90,   100, 0XFF0000, #red
+
+# D. LAND COVER COLORTABLE (基於台灣土地利用分類)
+#              pix, name,     flag,   hex/rgb, #comment
+LANDUSE_CLASS=  0,  Unclass , UNC   , 0X000000 #black
+LANDUSE_CLASS=  1,  Urban   , URB   , 0XFF0000 #red
+LANDUSE_CLASS=  2,  Agric   ,       , 0XFFFF00 #yellow
+LANDUSE_CLASS=  3,  Range   ,       , 0XC0C0C0 #silver
+LANDUSE_CLASS=  4,  Forest  ,       , 0X228B22 #forest green
+LANDUSE_CLASS=  5,  Water   , EXC   , 0X0066CC #blue
+LANDUSE_CLASS=  6,  Wetland ,       , 0X4169E1 #royal blue
+LANDUSE_CLASS=  7,  Barren  ,       , 0XD2B48C #tan
+
+# E. GROWTH TYPE IMAGE OUTPUT CONTROL
+VIEW_GROWTH_TYPES(YES/NO)=NO
+GROWTH_TYPE_PRINT_WINDOW=0,0,0,0,2020,2040
+PHASE0G_GROWTH_COLOR=0xff0000 # seed urban area
+PHASE1G_GROWTH_COLOR=0X00ff00 # diffusion growth
+PHASE2G_GROWTH_COLOR=0X0000ff # NOT USED
+PHASE3G_GROWTH_COLOR=0Xffff00 # breed growth
+PHASE4G_GROWTH_COLOR=0Xffffff # spread growth
+PHASE5G_GROWTH_COLOR=0X00ffff # road influenced growth
+
+# F. DELTATRON AGING SECTION
+VIEW_DELTATRON_AGING(YES/NO)=NO
+DELTATRON_PRINT_WINDOW=0,0,0,0,1950,2040
+DELTATRON_COLOR=0x000000 # index 0 No or dead deltatron
+DELTATRON_COLOR=0X00FF00 # index 1 age = 1 year
+DELTATRON_COLOR=0X00D200 # index 2 age = 2 year
+DELTATRON_COLOR=0X00AA00 # index 3 age = 3 year
+DELTATRON_COLOR=0X008200 # index 4 age = 4 year
+DELTATRON_COLOR=0X005A00 # index 5 age = 5 year
+
+# XIII. SELF-MODIFICATION PARAMETERS
+# 針對台灣快速都市化調整參數
+ROAD_GRAV_SENSITIVITY=0.01
+SLOPE_SENSITIVITY=0.1
+CRITICAL_LOW=0.95    # 較低門檻，適應快速成長
+CRITICAL_HIGH=1.5    # 較高門檻，允許更大波動
+CRITICAL_SLOPE=25.0  # 台灣地形陡峭，提高坡度門檻
+BOOM=1.05           # 成長期加速因子
+BUST=0.85           # 衰退期減緩因子

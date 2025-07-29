@@ -86,7 +86,7 @@ static char mem_log_filename[MAX_FILENAME_LEN];
 *******************************************************************************
 \*****************************************************************************/
 static void mem_CheckCheckArray ();
-static void mem_partition ();
+static void mem_partition (FILE * fp);
 static void mem_allocate ();
 static void mem_igrid_push (int i);
 static int mem_igrid_pop ();

@@ -31,9 +31,9 @@
 #               be located. 
 #   WHIRLGIF_BINARY: relative path to 'whirlgif' gif animation program. 
 #                    These must be compiled before execution. 
-INPUT_DIR=../Input/demo200/ 
-OUTPUT_DIR=../Output/demo200_test/
-WHIRLGIF_BINARY=../Whirlgif/whirlgif 
+INPUT_DIR=Input/demo200/ 
+OUTPUT_DIR=Output/demo200_test/
+WHIRLGIF_BINARY=Whirlgif/whirlgif 
 
 # II. RUNNING STATUS (ECHO) 
 #  Status of model run, monte carlo iteration, and year will be 
