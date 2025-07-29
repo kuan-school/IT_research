@@ -1103,7 +1103,6 @@ void
 
   for (i = 0; i < igrid.urban_count; i++)
   {
-    printf("DEBUG: Reading urban file %d: '%s'\n", i, igrid.urban[i].filename);
     igrid.urban[i].ptr = mem_GetIGridPtr (func);
     igrid_ReadGrid (igrid.urban[i].filename,
                     scratch_pad, igrid.urban[i].ptr);
@@ -1318,9 +1317,7 @@ static void
   igrid.excluded_count = 1;
 
   strcpy (igrid.slope.filename, scen_GetInputDir ());
-  printf("DEBUG: InputDir='%s', SlopeFilename='%s'\n", scen_GetInputDir(), scen_GetSlopeDataFilename());
   strcat (igrid.slope.filename, scen_GetSlopeDataFilename ());
-  printf("DEBUG: Complete slope filename='%s'\n", igrid.slope.filename);
   igrid_SetGridSizes (&igrid.slope);
   strcpy (igrid.slope.year.string, "");
   igrid.slope.year.digit = 0;
@@ -1365,7 +1362,6 @@ static void
 #define GIF_RES_OFFSET 10
 #define CONVERT2UINT(a,b) (((b)<<8)|(a))
   char func[] = "igrid_SetGridSizes";
-  printf("DEBUG: igrid_SetGridSizes called with filename='%s'\n", grid_ptr->filename);
   FILE *fp;
   unsigned char buffer[BYTES2READ + 1];
   char id_str[7];
